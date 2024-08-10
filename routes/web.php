@@ -1,10 +1,27 @@
 <?php
-
+use Illuminate\Support\Facades\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Models\Job;
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/jobs', function () {
+    return view('jobs', [
+        'jobs' => job::all()
+    ]);
+});
+
+
+
+Route::get('/jobs/{id}', function ($id) {
+    $job = Job::find($id);
+
+    return view('job', ['job' => $job]);
+});
+
+
 
 Route::get('/login', function () {
     return view('login');
@@ -17,6 +34,11 @@ Route::get('/contact', function () {
 Route::get('/latestnews', function () {
     return view('latestnews');
 });
+
 Route::get('/faq', function () {
     return view('faq');
+});
+
+Route::get('/', function () {
+    return view('home');
 });

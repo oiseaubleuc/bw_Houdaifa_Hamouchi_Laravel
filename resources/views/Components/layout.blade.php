@@ -30,6 +30,7 @@
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                             <x-nav-link href="{{ url('/') }}" >Home</x-nav-link>
                             <x-nav-link href="{{url('/login')}}">Login</x-nav-link>
+                            <x-nav-link href="{{url('/jobs')}}">Jobs</x-nav-link>
                             <x-nav-link href="{{url('/contact')}}" >Contact</x-nav-link>
                             <x-nav-link href="{{url ('/faq')}}" >FAQ</x-nav-link>
                             <x-nav-link href="{{url('/latestnews')}}">Latest news</x-nav-link>
@@ -99,6 +100,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="{{url('/home')}}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
                 <a href="{{url('/login')}}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
+                <a href="{{url('/jobs')}}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"> jobs</a>
                 <a href="{{url('/contact')}}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
                 <a href="{{url ('/faq')}}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">FAQ</a>
                 <a href="{{url('/latestnews')}}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Latest news</a>
