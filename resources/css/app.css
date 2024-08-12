@@ -56,3 +56,133 @@ body {
     font-size: 16px;
     color: #777;
 }
+/* Donkergrijze achtergrond, witte tekst, en donkergele decoratieve elementen */
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #fff;
+    background-color: #333;
+    /* Donkergrijze achtergrondkleur */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #c0a16b;
+    /* Donkergele kleur voor decoratieve elementen */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #c0a16b;
+    /* Donkergele rand onderaan */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+main {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+    background-color: #333;
+    /* Donkergrijze achtergrond voor inhoud */
+    color: #fff;
+    /* Witte tekstkleur */
+    border-radius: 8px;
+    border: 1px solid #c0a16b;
+    /* Donkergele rand om de inhoud */
+}
+
+.contact-form-section {
+    padding: 30px;
+}
+
+.contact-form-section h2 {
+    color: #c0a16b;
+    /* Donkergele kleur voor kopteksten */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: #fff;
+    /* Witte tekstkleur */
+}
+
+.contact-form input,
+.contact-form textarea {
+    font-size: 1em;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #c0a16b;
+    /* Donkergele rand om de inputvelden */
+    border-radius: 4px;
+    background-color: #444;
+    /* Donkergrijze achtergrond voor inputvelden */
+    color: #fff;
+    /* Witte tekstkleur voor inputvelden */
+}
+
+.contact-form button {
+    font-size: 1em;
+    padding: 10px 20px;
+    color: #333;
+    /* Donkergrijze tekstkleur op de knop */
+    background-color: #ddc654;
+    /* Donkergele achtergrondkleur voor de knop */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #ddc654;
+    /* Iets donkerder geel bij hover */
+}
+
+footer {
+    background-color: #333;
+    color: #c0a16b;
+    /* Donkergele tekstkleur voor de footer */
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 2px solid #ddc654;
+    /* Donkergele rand bovenaan de footer */
+}
+
+footer p {
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Media queries voor responsiviteit */
+@media (max-width: 768px) {
+    main {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .contact-form-section h2 {
+        font-size: 1.5em;
+    }
+
+    footer {
+        font-size: 0.8em;
+    }
+}

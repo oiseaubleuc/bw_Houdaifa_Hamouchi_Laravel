@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model{
     use HasFactory;
-    protected $table= 'job_listings';
+    protected $table= 'job_listing';
     protected $fillable = ['title', 'salary'];
     public function employer ()
     {
@@ -19,6 +19,13 @@ class Job extends Model{
         return $this->belongsToMany(Tag::class, foreignPivotKey: 'job_listing_id');
 
     }
+}
+/*public static function find (int $id):array{
+        $job =Arr::first(static:all(), find ($job) => $job['id'] === $id;
+        return $job;
+}
+{
 
+}
 
 }
