@@ -1,188 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Algemene instellingen voor de hele pagina */
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: #fff;
+    background-color: #000;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
+/* Container voor de boxen */
 .container {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    flex-wrap: wrap;
+    width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
+    gap: 20px;
 }
 
+/* Stijl voor elke individuele box */
 .box {
-    background-color: #fff;
-    border: 1px solid #eaeaea;
+    background-color: #222;
     border-radius: 8px;
     width: 30%;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .box:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
+/* Stijl voor de afbeeldingen binnen de box */
 .box img {
     width: 100%;
     height: auto;
     display: block;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
 }
 
+.box:hover img {
+    filter: brightness(1);
+}
+
+/* Stijl voor de inhoud binnen de box */
 .content {
     padding: 20px;
 }
 
 .content h2 {
-    margin: 0;
+    margin: 15px 0;
     font-size: 24px;
-    color: #333;
-    font-weight: 500;
+    font-weight: 700;
+    color: #fff;
 }
 
 .content p {
-    margin-top: 10px;
     font-size: 16px;
-    color: #777;
-}
-/* Donkergrijze achtergrond, witte tekst, en donkergele decoratieve elementen */
-
-body {
-    font-family: 'Poppins', Arial, sans-serif;
-    color: #fff;
-    background-color: #333;
-    /* Donkergrijze achtergrondkleur */
-    margin: 0;
-    padding: 0;
+    color: #ddd;
 }
 
-header {
-    background-color: #333;
-    color: #c0a16b;
-    /* Donkergele kleur voor decoratieve elementen */
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid #c0a16b;
-    /* Donkergele rand onderaan */
-}
-
-header h1 {
-    font-size: 2.5em;
-    margin: 0;
-    letter-spacing: 2px;
-    font-weight: 600;
-}
-
-main {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 0 20px;
-    background-color: #333;
-    /* Donkergrijze achtergrond voor inhoud */
-    color: #fff;
-    /* Witte tekstkleur */
-    border-radius: 8px;
-    border: 1px solid #c0a16b;
-    /* Donkergele rand om de inhoud */
-}
-
-.contact-form-section {
-    padding: 30px;
-}
-
-.contact-form-section h2 {
-    color: #c0a16b;
-    /* Donkergele kleur voor kopteksten */
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 600;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-form label {
-    font-size: 1em;
-    margin-bottom: 8px;
-    color: #fff;
-    /* Witte tekstkleur */
-}
-
-.contact-form input,
-.contact-form textarea {
-    font-size: 1em;
+/* Algemene stijl voor inputvelden en textarea */
+.input-field {
+    width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #c0a16b;
-    /* Donkergele rand om de inputvelden */
+    margin: 10px 0;
+    border: 1px solid #444;
     border-radius: 4px;
-    background-color: #444;
-    /* Donkergrijze achtergrond voor inputvelden */
+    background-color: #333;
     color: #fff;
-    /* Witte tekstkleur voor inputvelden */
+    font-size: 16px;
 }
 
-.contact-form button {
-    font-size: 1em;
+/* Stijl voor de submit-knop */
+.submit-button {
     padding: 10px 20px;
-    color: #333;
-    /* Donkergrijze tekstkleur op de knop */
-    background-color: #ddc654;
-    /* Donkergele achtergrondkleur voor de knop */
+    background-color: #444;
+    color: #fff;
     border: none;
-    border-radius: 50px;
+    border-radius: 4px;
     cursor: pointer;
-    font-weight: 600;
+    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
-.contact-form button:hover {
-    background-color: #ddc654;
-    /* Iets donkerder geel bij hover */
+.submit-button:hover {
+    background-color: #555;
 }
 
-footer {
-    background-color: #333;
-    color: #c0a16b;
-    /* Donkergele tekstkleur voor de footer */
-    padding: 20px;
-    text-align: center;
-    font-size: 0.9em;
-    border-top: 2px solid #ddc654;
-    /* Donkergele rand bovenaan de footer */
-}
-
-footer p {
-    margin: 0;
-    letter-spacing: 1px;
-}
-
-/* Media queries voor responsiviteit */
+/* Media queries voor mobiele apparaten */
 @media (max-width: 768px) {
-    main {
-        margin: 20px;
-        padding: 20px;
+    .container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .contact-form-section h2 {
-        font-size: 1.5em;
+    .box {
+        width: 80%;
+        margin-bottom: 20px;
     }
 
-    footer {
-        font-size: 0.8em;
+    .content h2 {
+        font-size: 20px;
+    }
+
+    .content p {
+        font-size: 14px;
+    }
+
+    .input-field {
+        font-size: 14px;
+    }
+
+    .submit-button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content h2 {
+        font-size: 18px;
+    }
+
+    .content p {
+        font-size: 13px;
+    }
+
+    .input-field {
+        font-size: 13px;
+    }
+
+    .submit-button {
+        font-size: 13px;
+        padding: 8px 16px;
     }
 }

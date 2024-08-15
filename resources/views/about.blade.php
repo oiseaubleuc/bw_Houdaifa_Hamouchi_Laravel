@@ -1,16 +1,15 @@
 <x-layout>
-    <x-slot:headings>
-        Contact page
-    </x-slot:headings>
+    <x-slot:heading>
+        About Us
+    </x-slot:heading>
 
 
-        <title>Neem Contact Op</title>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <div class="container mx-auto py-6">
+        <h1 class="text-3xl font-bold">About Us</h1>
+        <p class="mt-4 text-gray-600">This is the About page.</p>
         <script src="https://cdn.tailwindcss.com"></script>
 
-
-
-        <h1>Neem Contact Op</h1>
+    </div>
 
     <div>
         <section class="contact-form-section">
@@ -29,10 +28,4 @@
             </form>
         </section>
     </div>
-
-
-    <footer>
-        <p>&copy; 2024 Neem Contact Op. Alle rechten voorbehouden.</p>
-    </footer>
-
 </x-layout>

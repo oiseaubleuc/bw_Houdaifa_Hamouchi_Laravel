@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Employer;
+//use App\Models\Employer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,18 +10,18 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class JobFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+
+    protected $model = Job::class;
+
+    public function definition()
     {
         return [
-            'title' => fake()-> jobTitle(),
-            'employer_id'=>Employer::factory(),
-            'salary' => '$50.000 USD'
-
+            'naam' => $this->faker->lastName,  // Generates a random last name
+            'voornaam' => $this->faker->firstName,  // Generates a random first name
+            'username' => $this->faker->userName,  // Generates a random username
+            'email' => $this->faker->unique()->safeEmail, // Ensures each email is unique
+            'beschrijving' => $this->faker->paragraph,  // Generates a random paragraph of text
+            'bijlage' => null,  // Optionally, you can set this to null or add logic to generate a file path
         ];
     }
 }
