@@ -1,0 +1,132 @@
+/* Luxueuze stijl voor een website */
+
+body {
+    font-family: 'Bodoni Moda', serif;
+    /* Elegante serif-lettertype */
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #000;
+    /* Klassiek zwart voor een premium uitstraling */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #c0a16b;
+    /* Gouden tint voor luxe */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+main {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    /* Zachte schaduw voor diepte */
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    /* Subtiele rand */
+}
+
+h2 {
+    font-family: 'Lora', serif;
+    /* Modern serif voor contrast */
+    color: #c0a16b;
+    /* Gouden accentkleur */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.faq-item h3 {
+    font-family: 'Lora', serif;
+    color: #333;
+    font-size: 1.3em;
+    margin: 20px 0;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    border-left: 5px solid #c0a16b;
+    /* Gouden rand voor premium uitstraling */
+    transition: background-color 0.3s ease;
+}
+
+.faq-item h3:hover {
+    background-color: #f9f9f9;
+}
+
+.faq-item p {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 20px 20px;
+    display: none;
+}
+
+.faq-item.active p {
+    display: block;
+}
+
+button {
+    font-family: 'Lora', serif;
+    font-size: 1em;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #000;
+    border: 2px solid #c0a16b;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c0a16b;
+    color: #000;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 2px solid #c0a16b;
+}
+
+footer p {
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Media queries voor responsiviteit */
+@media (max-width: 768px) {
+    main {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .faq-item h3 {
+        font-size: 1.1em;
+    }
+
+    footer {
+        font-size: 0.8em;
+    }
+}

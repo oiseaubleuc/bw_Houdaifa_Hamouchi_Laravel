@@ -7,6 +7,11 @@ use App\Jobs\TranslateJob;
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
+
+
+
 
 
 Route::get('test', function () {
@@ -36,24 +41,56 @@ Route::post('/submit_casus', [JobController::class, 'store'])->name('submit_casu
 
 Route::view('/contact', 'contact');
 
+
+Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
+
+
+
+
+
+
 Route::view('/about', 'about');
 ;
 Route::view('/faq', 'faq');
 
 
 
-Route::view('/news', 'news');
-
-
+// Zorg ervoor dat je deze route toevoegt
 Route::get('/news', [NewsController::class, 'index'])->name('news');
+Route::get('/news/create', [NewsController::class, 'create'])->name('news.create')->middleware('auth');
+Route::post('/news', [NewsController::class, 'store'])->name('news.store')->middleware('auth');
+Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/news/{news}/edit', [NewsController::class, 'edit'])->name('news.edit')->middleware('auth');
+Route::put('/news/{news}', [NewsController::class, 'update'])->name('news.update')->middleware('auth');
 
 
 
 
-Route::get('/jobs', [JobController::class, 'index']);
-Route::get('/jobs/create', [JobController::class, 'create']);
-Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
-Route::get('/jobs/{job}', [JobController::class, 'show']);
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
+    Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
+    Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+    Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->name('jobs.edit');
+    Route::put('/jobs/{job}', [JobController::class, 'update'])->name('jobs.update');
+    Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->name('jobs.destroy');
+});
+
+// Admin routes (optional)
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+});
 
 Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])
     ->middleware('auth')

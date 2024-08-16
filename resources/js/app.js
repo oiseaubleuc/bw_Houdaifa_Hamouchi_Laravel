@@ -1,4 +1,5 @@
-import  './bootstrap';
+import './bootstrap';
 import "../css/app.css";
 
 // alert('hello from the JS');
+
