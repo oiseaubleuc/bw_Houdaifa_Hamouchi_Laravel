@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\LanguageController;
+
 
 
 
@@ -45,15 +49,36 @@ Route::view('/contact', 'contact');
 Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
 
-
-
-
-
-
 Route::view('/about', 'about');
 ;
 Route::view('/faq', 'faq');
 
+Route::get('/home', function (){
+    return view('localization');
+});
+Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
+
+
+App::setLocale('fr');
+App::setLocale('eng');
+
+
+
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'fr', 'nl'])) {
+        Session::put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
+
+
+Route::group(['prefix' => '{locale}'], function() {
+    Route::get('welcome', function ($locale) {
+        App::setLocale($locale);
+        return view('welcome');
+    });
+});
 
 
 // Zorg ervoor dat je deze route toevoegt
@@ -106,5 +131,14 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
+
+
+
+Route::get('/jobs/pdf', [JobController::class, 'downloadPDF'])->name('jobs.pdf')->middleware('auth');
+Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+
+Route::get('/jobs/{job}/pdf', [JobController::class, 'downloadPDF'])->name('jobs.pdf');
+Route::get('/download-pdf', [PDFController::class, 'downloadPDF'])->name('download.pdf');
+
 
 

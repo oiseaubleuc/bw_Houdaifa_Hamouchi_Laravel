@@ -17,8 +17,6 @@
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-
-                        <!-- Logo with rounded border -->
                         <a href="{{ url('/') }}">
                             <img class="h-16 w-16 rounded-full" src="{{ asset('images/logo.svg') }}" alt="Your Company">
                         </a>
@@ -28,63 +26,79 @@
                             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                             @auth
                                 @if(auth()->user()->is_admin)
-                                    {{ auth()->user()->is_admin ? 'Admin is true' : 'Admin is false' }}
                                     <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
                                 @endif
                             @endauth
 
-                            <x-nav-link href="/about" :active="request()->is('about')">About Us</x-nav-link>
+                            <x-nav-link href="/about" :active="request()->is('about')">Over Ons</x-nav-link>
                             <x-nav-link href="/faq" :active="request()->is('faq')">FAQ</x-nav-link>
                             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
-                            <x-nav-link href="/news" :active="request()->is('news')">Latest News</x-nav-link>
+                            <x-nav-link href="/news" :active="request()->is('news')">Laatste Nieuws</x-nav-link>
                         </div>
                     </div>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-4 flex items-center md:ml-6">
-                        @guest
-                            <x-nav-link href="/login" :active="request()->is('login')">Log In</x-nav-link>
-                            <x-nav-link href="/register" :active="request()->is('register')">Register</x-nav-link>
-                        @endguest
-                            @auth
-                            <div class="relative">
-                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition">
-                                    <img class="h-8 w-8 rounded-full" src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('default-avatar.png') }}" alt="Profile Picture">
-                                </button>
-                                <div class="dropdown-content absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 z-10 hidden">
-                                    <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
-                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                                </div>
-                            </div>
 
-                            @endauth
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Localization Dropdown -->
+                    <div class="relative">
+                        <button class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                                id="languageMenuButton" aria-expanded="false" aria-haspopup="true">
+                            <img src="{{ asset('images/' . App::getLocale() . '-flag.png') }}" alt="Current Language Flag" class="w-5 h-5 rounded-full inline-block mr-2" />
+                            {{ App::getLocale() == 'en' ? 'English' : (App::getLocale() == 'fr' ? 'Français' : 'Nederlands') }}
+                        </button>
 
-
-                        @auth
-                            <form method="POST" action="/logout">
-                                @csrf
-                                <x-form-button>Log Out</x-form-button>
-                            </form>
-                        @endauth
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 hidden" id="languageDropdown">
+                            <a href="{{ route('lang.switch', 'en') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                <img src="{{ asset('images/english-flag.png') }}" alt="English Flag" class="w-5 h-5 rounded-full inline-block mr-2" />
+                                English
+                            </a>
+                            <a href="{{ route('lang.switch', 'fr') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                <img src="{{ asset('images/french-flag.png') }}" alt="French Flag" class="w-5 h-5 rounded-full inline-block mr-2" />
+                                Français
+                            </a>
+                            <a href="{{ route('lang.switch', 'nl') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                <img src="{{ asset('images/dutch-flag.png') }}" alt="Dutch Flag" class="w-5 h-5 rounded-full inline-block mr-2" />
+                                Nederlands
+                            </a>
+                        </div>
                     </div>
+
+                    <!--<div class="dropdown">
+                         <button id="languageMenuButton">Select Language</button>
+                         <div id="languageDropdown" class="dropdown-content">
+                             <a href="#" data-lang="en">
+                                 <img src="/public/images/english-flag.png" alt="English" /> English
+                             </a>
+                             <a href="#" data-lang="es">
+                                 <img src="/public/images/dutch-icno.png" alt="Nederlands" /> Nederlands
+                             </a>
+                             <a href="#" data-lang="fr">
+                                 <img src="/public/images/french-icno.png" alt="Français" /> Français
+                             </a>
+                         </div>
+                     </div>-->
+                    @guest
+                        <x-nav-link href="/login" :active="request()->is('login')">Log In</x-nav-link>
+                        <x-nav-link href="/register" :active="request()->is('register')">Register</x-nav-link>
+                    @endguest
+
+                    @auth
+                        <div class="relative">
+                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition">
+                                <img class="h-8 w-8 rounded-full" src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('default-avatar.png') }}" alt="Profile Picture">
+                            </button>
+                            <div class="dropdown-content absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 z-10 hidden">
+                                <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
+                                <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            </div>
+                        </div>
+                        <form method="POST" action="/logout">
+                            @csrf
+                            <x-form-button>Log Out</x-form-button>
+                        </form>
+                    @endauth
                 </div>
 
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const profileButton = document.querySelector('.relative button');
-                        const dropdownContent = document.querySelector('.dropdown-content');
-
-                        profileButton.addEventListener('click', function () {
-                            dropdownContent.classList.toggle('hidden');
-                        });
-
-                        document.addEventListener('click', function (e) {
-                            if (!profileButton.contains(e.target) && !dropdownContent.contains(e.target)) {
-                                dropdownContent.classList.add('hidden');
-                            }
-                        });
-                    });
-                </script>
                 <div class="-mr-2 flex md:hidden">
                     <!-- Mobile menu button -->
                     <button type="button"
@@ -104,62 +118,14 @@
                 </div>
             </div>
         </div>
-
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="md:hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-                   aria-current="page">Home</a>
-                <a href="/about"
-                   class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</a>
-                <a href="/contact"
-                   class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>
-            </div>
-            <div class="border-t border-gray-700 pb-3 pt-4">
-                <div class="flex items-center px-5">
-                    <div class="flex-shrink-0">
-                        <img class="h-10 w-10 rounded-full" src="/public/images/logo.svg" alt="User Image">
-                    </div>
-                    <div class="ml-3">
-                        <div class="text-base font-medium leading-none text-white">Houdi</div>
-                        <div class="text-sm font-medium leading-none text-gray-400">/</div>
-                    </div>
-                    <button type="button"
-                            class="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span class="sr-only">View notifications</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
-                        </svg>
-                    </button>
-                </div>
-                <nav class="bg-gray-800 p-4">
-                    <div class="container mx-auto flex justify-between items-center">
-                        <div>
-                            <!-- Other nav items -->
-                        </div>
-                        <div class="flex items-center">
-                            <!-- Profile Icon and Link -->
-                            <a href="{{ route('profile.edit') }}" class="flex items-center text-white hover:text-gray-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 13.877a1.5 1.5 0 00-.707 1.636l1.243 4.428a1.5 1.5 0 001.33 1.061h8.965a1.5 1.5 0 001.33-1.061l1.243-4.428a1.5 1.5 0 00-.707-1.636L12 6.5 5.121 13.877z" />
-                                </svg>
-                                Profile
-                            </a>
-                        </div>
-                    </div>
-                </nav>
-
-            </div>
-        </div>
     </nav>
 
     <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Contact</h1>
-            <x-button href="/jobs/create">aanvraag</x-button>
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900"></h1>
+            @auth
+                <x-button href="{{ route('jobs.index') }}">Formulieren</x-button>
+            @endauth
         </div>
     </header>
 
@@ -169,5 +135,35 @@
         </div>
     </main>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const profileButton = document.querySelector('.relative button');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        profileButton.addEventListener('click', function () {
+            dropdownContent.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!profileButton.contains(e.target) && !dropdownContent.contains(e.target)) {
+                dropdownContent.classList.add('hidden');
+            }
+        });
+
+        const languageButton = document.getElementById('languageMenuButton');
+        const languageDropdown = document.getElementById('languageDropdown');
+
+        languageButton.addEventListener('click', function () {
+            languageDropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!languageButton.contains(e.target) && !languageDropdown.contains(e.target)) {
+                languageDropdown.classList.add('hidden');
+            }
+        });
+    });
+</script>
 </body>
 </html>

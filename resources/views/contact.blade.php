@@ -60,32 +60,18 @@
             </div>
         </form>
 
-        <!-- Google Maps Integratie -->
+        <!-- Embedded Google Maps -->
         <div class="mt-8">
             <h3 class="text-xl font-bold mb-4">Onze Locatie</h3>
-            <div id="map" style="height: 400px;"></div>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.4020378843675!2d4.320233077352735!3d50.84223897166962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c55f1eb0be91%3A0x1cb44c9f6c7da498!2sNijverheidskaai%20170%2C%201070%20Anderlecht!5e0!3m2!1snl!2sbe!4v1723887825896!5m2!1snl!2sbe"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </div>
-
-    <!-- Google Maps Script -->
-    <div id="map" style="width: 100%; height: 600px;"></div>
-
-    <script>
-        function initMap() {
-            var location = { lat: 50.837128, lng: 4.300530 };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: location
-            });
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map
-            });
-        }
-    </script>
-
-    <!-- Vervang YOUR_API_KEY door je echte Google Maps API-sleutel -->
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.4020378843675!2d4.320233077352735!3d50.84223897166962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c55f1eb0be91%3A0x1cb44c9f6c7da498!2sNijverheidskaai%20170%2C%201070%20Anderlecht!5e0!3m2!1snl!2sbe!4v1723736227051!5m2!1snl!2sbe" width="200" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
 </x-layout>

@@ -71,22 +71,6 @@ class JobController extends Controller
         return view('jobs.edit', ['job' => $job]);
     }
 
-    /*public function update(Job $job)
-    {
-        Gate::authorize('edit-job', $job);
-
-        request()->validate([
-            'title' => ['required', 'min:3'],
-            'salary' => ['required']
-        ]);
-
-        $job->update([
-            'title' => request('title'),
-            'salary' => request('salary'),
-        ]);
-
-        return redirect('/jobs/' . $job->id);
-    }*/
 
     public function destroy(Job $job)
     {
@@ -96,4 +80,27 @@ class JobController extends Controller
 
         return redirect('/jobs');
     }
+    public function downloadPdf()
+    {
+        // Ensure only admins can download the PDF
+        if (!auth()->user()->is_admin) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Retrieve all jobs
+        $jobs = Job::all();
+
+        // Generate the PDF
+        $pdf = PDF::loadView('jobs.pdf', compact('jobs'));
+
+        // Download the PDF
+        return $pdf->download('jobs.pdf');
+
+
+    }
+
+
+
+
+
 }

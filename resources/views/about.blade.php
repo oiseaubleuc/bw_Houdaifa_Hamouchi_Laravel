@@ -5,7 +5,9 @@
 
 
     <div class="container mx-auto py-6">
-        <h1 class="text-3xl font-bold">Over Ons</h1>
+        <h1>{{ __('messages.about_title') }}</h1>
+        <p>{{ __('messages.about_content') }}</p>
+
         <script src="https://cdn.tailwindcss.com"></script>
 
     </div>
