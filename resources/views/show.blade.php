@@ -1,4 +1,3 @@
-<!-- resources/views/news/show.blade.php -->
 <x-layout>
     <x-slot:heading>
         {{ $news->title }}
@@ -19,9 +18,15 @@
                 </div>
             </div>
         </div>
-        <div class="mt-6">
-            <a href="{{ route('news') }}" class="text-blue-500 hover:underline">Terug naar Artikels</a>
+        <div class="flex justify-end">
+
+
+            <a href="{{ route('jobs.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Terug naar Jobs
+            </a>
         </div>
+
     </div>
 </x-layout>
+
 

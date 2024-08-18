@@ -8,29 +8,23 @@ use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
-    // Display a listing of the news posts.
     public function index()
     {
         if (auth()->check()) {
-            // Fetch articles created by the logged-in user and eager load the user relationship
             $userArticles = News::where('user_id', auth()->id())->with('user')->get();
         } else {
-            // If the user is not authenticated, set $userArticles to an empty collection
             $userArticles = collect();
         }
 
-        // Fetch articles created by other users and eager load the user relationship
         $otherArticles = News::where('user_id', '!=', auth()->id())->with('user')->paginate(10);
 
-        // Pass both collections to the view
         return view('news', compact('userArticles', 'otherArticles'));
     }
 
 
-    // Show the form for creating a new news post.
     public function create()
     {
-        return view('create'); // Ensure 'create.blade.php' exists in the correct location
+        return view('create');
     }
 
     public function user()
@@ -39,7 +33,7 @@ class NewsController extends Controller
     }
 
 
-    // Store a newly created news post in the database.
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -49,32 +43,30 @@ class NewsController extends Controller
         ]);
 
         $validatedData['user_id'] = auth()->id();
-
-        // Handle the image upload
+        echo $request;
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
-            $validatedData['image_file'] = $imagePath; // Use 'image_file' for consistency
+            $validatedData['image_file'] = $imagePath;
         }
 
-        // Create the news post
         $news = News::create($validatedData);
 
         return redirect()->route('news')->with('success', 'News created successfully.');
     }
 
-    // Display the specified news post.
+
     public function show(News $news)
     {
-        return view('show', compact('news')); // Adjust 'news' if your file path differs
+        return view('show', compact('news'));
     }
 
-    // Show the form for editing the specified news post.
+
     public function edit(News $news)
     {
-        return view('news.edit', compact('news')); // Adjust 'news.edit' if your file path differs
+        return view('news.edit', compact('news'));
     }
 
-    // Update the specified news post in the database.
+
     public function update(Request $request, News $news)
     {
         $validatedData = $request->validate([
@@ -83,34 +75,29 @@ class NewsController extends Controller
             'content' => 'required|string',
         ]);
 
-        // Handle the image upload
         if ($request->hasFile('image')) {
-            // Delete the old image
             if ($news->image_file) {
                 Storage::disk('public')->delete($news->image_file);
             }
 
             $imagePath = $request->file('image')->store('images', 'public');
-            $validatedData['image_file'] = $imagePath; // Use 'image_file' for consistency
+            $validatedData['image_file'] = $imagePath;
         }
 
-        // Update the news post
         $news->update($validatedData);
 
         return redirect()->route('news')->with('success', 'News updated successfully.');
     }
 
-    // Remove the specified news post from the database.
     public function destroy(News $news)
     {
-        // Delete the image file from storage
-        if ($news->image_file) { // Use 'image_file' for consistency
+        if ($news->image_file) {
             Storage::disk('public')->delete($news->image_file);
         }
 
-        // Delete the news post
         $news->delete();
 
         return redirect()->route('news')->with('success', 'News deleted successfully.');
     }
 }
+

@@ -16,12 +16,13 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-            'naam' => $this->faker->lastName,  // Generates a random last name
-            'voornaam' => $this->faker->firstName,  // Generates a random first name
-            'username' => $this->faker->userName,  // Generates a random username
-            'email' => $this->faker->unique()->safeEmail, // Ensures each email is unique
-            'beschrijving' => $this->faker->paragraph,  // Generates a random paragraph of text
-            'bijlage' => null,  // Optionally, you can set this to null or add logic to generate a file path
+            'naam' => $this->faker->lastName,
+            'voornaam' => $this->faker->firstName,
+            'username' => $this->faker->userName,
+            'email' => $this->faker->unique()->safeEmail,
+            'beschrijving' => $this->faker->paragraph,
+            'bijlage' => null,
         ];
     }
 }
+

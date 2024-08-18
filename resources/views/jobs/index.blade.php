@@ -4,6 +4,7 @@
     </x-slot:heading>
 
     <div class="space-y-4">
+
         <table class="min-w-full bg-white border border-gray-300">
             <thead>
             <tr>
@@ -38,13 +39,7 @@
                     </td>
                     <td class="py-2 px-4 border-b">{{ $job->created_at->format('Y-m-d') }}</td>
                     <td class="py-2 px-4 border-b">
-                        <a href="/jobs/{{ $job->id }}" class="text-blue-500 hover:underline">View</a>
-                        <a href="/jobs/{{ $job->id }}/edit" class="text-yellow-500 hover:underline ml-2">Edit</a>
-                        <form action="/jobs/{{ $job->id }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline ml-2">Delete</button>
-                        </form>
+                        <a href="{{ route('jobs.show', $job) }}" class="text-blue-500 hover:underline">View</a>
                     </td>
                 </tr>
             @endforeach
@@ -52,3 +47,4 @@
         </table>
     </div>
 </x-layout>
+

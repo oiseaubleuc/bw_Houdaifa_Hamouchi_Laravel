@@ -21,7 +21,7 @@ class CreateJobsTable extends Migration
             $table->string('email');
             $table->string('type');
             $table->text('beschrijving');
-            $table->string('bijlage')->nullable(); // For file upload
+            $table->string('bijlage')->nullable();
             $table->timestamps();
         });
     }
@@ -36,3 +36,4 @@ class CreateJobsTable extends Migration
         Schema::dropIfExists('jobs');
     }
 };
+

@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Artikels in Civil Law & Litigation
+        Latest News
     </x-slot:heading>
 
     <div class="container mx-auto py-6">
@@ -38,7 +38,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             @foreach ($otherArticles as $article)
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img class="w-full h-48 object-cover" src="{{ asset('storage/'.$article->image_file) }}" alt="{{ $article->title }}">
+                    <img class="w-full h-48 object-cover" src="{{ asset('storage/' . $article->image_file) }}" alt="{{ $article->title }}">
                     <div class="p-4">
                         <h3 class="text-lg font-semibold mb-2">{{ $article->title }}</h3>
                         <p class="text-sm text-gray-600 mb-4">
@@ -59,3 +59,4 @@
         </div>
     </div>
 </x-layout>
+

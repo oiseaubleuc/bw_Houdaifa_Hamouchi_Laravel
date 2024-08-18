@@ -4,12 +4,10 @@
     </x-slot:heading>
 
     <div class="container mx-auto py-6">
-        <!-- Header Section -->
         <h2 class="text-2xl font-bold">Strafrecht</h2>
         <p class="mt-4 text-gray-600">Advies en vertegenwoordiging in alle strafrechtelijke zaken.</p>
-            <img src="/images/strafrecht.jpeg" alt="" class="w-full mt-6 rounded-lg">
+        <img src="/images/strafrecht.jpeg" alt="" class="w-full mt-6 rounded-lg">
 
-        <!-- Form Section -->
         <form action="{{ route('submit_casus') }}" method="post" enctype="multipart/form-data" class="box p-6 mt-8 border rounded-lg shadow-lg">
             @csrf
             <div class="content">
@@ -51,3 +49,4 @@
         </form>
     </div>
 </x-layout>
+

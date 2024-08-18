@@ -53,3 +53,4 @@ class JobPosted extends Mailable
         return [];
     }
 }
+

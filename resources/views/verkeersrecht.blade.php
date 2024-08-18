@@ -4,12 +4,12 @@
     </x-slot:heading>
 
     <div class="container mx-auto py-6">
-        <!-- Header Section -->
+
         <h2 class="text-2xl font-bold">Verkeersrecht</h2>
         <p class="mt-4 text-gray-600">Ondersteuning bij familierechtelijke kwesties zoals echtscheiding en kinderopvang.</p>
         <img src="/images/verkeersrecht.jpeg" alt="Verkeersrecht" class="w-full mt-6 rounded-lg">
 
-        <!-- Form Section -->
+
         <form action="{{ route('submit_casus') }}" method="post" enctype="multipart/form-data" class="box p-6 mt-8 border rounded-lg shadow-lg">
             @csrf
             <div class="content">
@@ -51,3 +51,4 @@
         </form>
     </div>
 </x-layout>
+

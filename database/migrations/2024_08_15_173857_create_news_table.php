@@ -14,10 +14,10 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('title');          // Title column
-            $table->text('content');          // Content column
-            $table->string('image_file');      // Image column
-            $table->timestamps();             // Created_at and Updated_at columns
+            $table->string('title');
+            $table->text('content');
+            $table->string('image_file');
+            $table->timestamps();
         });
     }
 
@@ -31,4 +31,5 @@ class CreateNewsTable extends Migration
         Schema::dropIfExists('news');
     }
 }
+
 

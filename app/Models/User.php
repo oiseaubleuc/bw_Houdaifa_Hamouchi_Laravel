@@ -14,6 +14,7 @@ class User extends Authenticatable
     {
         return $this->attributes['is_admin'];
     }
+
     use HasFactory, Notifiable;
 
     protected $guarded = [];
@@ -36,8 +37,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'is_admin' => 'boolean', // Automatically cast is_admin to a boolean
-        'birthday' => 'date', ];
+        'is_admin' => 'boolean',
+        'birthday' => 'date',];
+
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
 
 
 

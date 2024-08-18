@@ -1,4 +1,3 @@
-<!-- resources/views/news/create.blade.php -->
 <x-layout>
     <x-slot:heading>
         Nieuw Artikel Toevoegen
@@ -28,3 +27,4 @@
         </form>
     </div>
 </x-layout>
+

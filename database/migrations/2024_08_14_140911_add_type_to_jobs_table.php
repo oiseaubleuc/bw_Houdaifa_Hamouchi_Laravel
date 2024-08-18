@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('jobs', function (Blueprint $table) {
-            // Check if the 'type' column does not already exist before adding it
             if (!Schema::hasColumn('jobs', 'type')) {
                 $table->string('type')->nullable()->after('beschrijving');
             }
@@ -25,10 +24,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('jobs', function (Blueprint $table) {
-            // Drop the 'type' column only if it exists
             if (Schema::hasColumn('jobs', 'type')) {
                 $table->dropColumn('type');
             }
         });
     }
 };
+
+

@@ -27,6 +27,11 @@ class SessionController extends Controller
 
         request()->session()->regenerate();
 
+
+        if (Auth::user()->is_admin) {
+            return redirect('/admin/dashboard');
+        }
+
         return redirect('/jobs');
     }
 
@@ -37,3 +42,4 @@ class SessionController extends Controller
         return redirect('/');
     }
 }
+

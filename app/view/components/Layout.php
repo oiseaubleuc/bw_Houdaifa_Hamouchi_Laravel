@@ -24,3 +24,4 @@ class Layout extends Component
         return view('components.layout');
     }
 }
+

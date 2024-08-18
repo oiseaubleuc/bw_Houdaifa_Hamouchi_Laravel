@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Algemene instellingen voor de hele pagina */
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     color: #fff;
@@ -15,7 +14,6 @@ body {
     min-height: 100vh;
 }
 
-/* Container voor de boxen */
 .container {
     display: flex;
     justify-content: space-between;
@@ -26,7 +24,6 @@ body {
     gap: 20px;
 }
 
-/* Stijl voor elke individuele box */
 .box {
     background-color: #222;
     border-radius: 8px;
@@ -44,7 +41,6 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-/* Stijl voor de afbeeldingen binnen de box */
 .box img {
     width: 100%;
     height: auto;
@@ -57,7 +53,6 @@ body {
     filter: brightness(1);
 }
 
-/* Stijl voor de inhoud binnen de box */
 .content {
     padding: 20px;
 }
@@ -74,7 +69,6 @@ body {
     color: #ddd;
 }
 
-/* Algemene stijl voor inputvelden en textarea */
 .input-field {
     width: 100%;
     padding: 10px;
@@ -86,7 +80,6 @@ body {
     font-size: 16px;
 }
 
-/* Stijl voor de submit-knop */
 .submit-button {
     padding: 10px 20px;
     background-color: #444;
@@ -102,7 +95,6 @@ body {
     background-color: #555;
 }
 
-/* Media queries voor mobiele apparaten */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -172,11 +164,11 @@ body {
 .map-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-    border: 5px solid black; /* Zwarte contour */
-    border-radius: 10px; /* Hoekafgeronde contour */
+    border: 5px solid black;
+    border-radius: 10px;
 }
 .map-container iframe {
     position: absolute;
@@ -187,11 +179,9 @@ body {
     border: 0;
 }
 
-/* resources/css/app.css */
 
-/* Algemene stijlen voor FAQ-items */
 .faq-item {
-    border-bottom: 1px solid #e5e7eb; /* Light gray border */
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .faq-content {
@@ -214,11 +204,11 @@ body {
 }
 
 .faq-content p {
-    color: #4b5563; /* Gray */
+    color: #4b5563;
 }
 
-/* Custom dropdown styles */
 .dropdown-content {
-    right: 0; /* Align the dropdown to the right */
+    right: 0;
 }
+
 

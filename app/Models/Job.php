@@ -12,10 +12,7 @@ class Job extends Model {
 
     protected $guarded = [];
 
-//    public function employer()
-//    {
-//        return $this->belongsTo(Employer::class);
-//    }
+
 
     protected $fillable = [
         'naam',

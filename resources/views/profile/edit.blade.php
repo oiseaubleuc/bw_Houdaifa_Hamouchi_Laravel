@@ -1,4 +1,3 @@
-<!-- resources/views/profile/edit.blade.php -->
 
 <x-layout>
     <x-slot name="heading">Edit Profile</x-slot>
@@ -8,25 +7,21 @@
             <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @csrf
 
-                <!-- Username -->
                 <div class="mb-4">
                     <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
                     <input type="text" id="username" name="username" value="{{ old('username', $user->username) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                 </div>
 
-                <!-- Birthday -->
                 <div class="mb-4">
                     <label for="birthday" class="block text-sm font-medium text-gray-700">Birthday</label>
                     <input type="date" id="birthday" name="birthday" value="{{ old('birthday', $user->birthday) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                 </div>
 
-                <!-- Avatar -->
                 <div class="mb-4">
                     <label for="avatar" class="block text-sm font-medium text-gray-700">Avatar</label>
                     <input type="file" id="avatar" name="avatar" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                 </div>
 
-                <!-- About Me -->
                 <div class="mb-4">
                     <label for="about_me" class="block text-sm font-medium text-gray-700">About Me</label>
                     <textarea id="about_me" name="about_me" rows="5" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">{{ old('about_me', $user->about_me) }}</textarea>
@@ -39,3 +34,4 @@
         </div>
     </div>
 </x-layout>
+
