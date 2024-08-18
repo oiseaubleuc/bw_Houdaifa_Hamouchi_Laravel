@@ -74,6 +74,13 @@
             This project was built using Laravel version  11.20.0, with a MySQL database. The site employs a clean architecture by splitting logic across multiple controllers and models. Migrations and seeders ensure that the database is correctly initialized and populated with dummy data for testing purposes. Security features, including middleware for role management and CSRF tokens, are implemented throughout the site.
         </p>
 
+        <li>
+            <strong>GIT link </strong>
+            I used GitHub to efficiently manage version control, ensuring seamless collaboration, organized code, and the ability to track and revert changes throughout the development process.
+            <a href="https://github.com/oiseaubleuc/bw_Houdaifa_Hamouchi_Laravel.git" class="text-blue-500 hover:underline" target="_blank">https://github.com/oiseaubleuc/bw_Houdaifa_Hamouchi_Laravel.git</a>
+        </li>
+
+
         <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-6">Acknowledgments</h2>
         <p class="text-lg text-gray-600 mb-6">
             I would like to acknowledge the valuable resources provided by the Laravel community and various online tutorials, which were instrumental in the completion of this project. Their guidance helped me understand complex concepts and implement them effectively in this web application. Additionally, I want to express my deepest gratitude to my parents for their unwavering support throughout this journey, especially my father for closely following my progress. I also want to thank my family members for their valuable feedback and corrections on my work        </p>
