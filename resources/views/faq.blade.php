@@ -2,12 +2,16 @@
     <x-slot:heading>
         About Us
     </x-slot:heading>
+    @php
+        $pageTitle = __('messages._title'); // or hardcode the title like 'Contact'
+    @endphp
 
 
     <script src="{{ asset('js/faq.js') }}"></script>
 
     <div class="container mx-auto py-6">
-        <h1 class="text-3xl font-bold">Veelgestelde Vragen (FAQ)</h1>
+        <h1>{{ __('messages.faq_title') }}</h1>
+
     </div>
 
     <div class="container mx-auto py-6">
