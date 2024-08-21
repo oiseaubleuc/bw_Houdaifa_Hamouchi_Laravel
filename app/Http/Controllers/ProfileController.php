@@ -10,21 +10,18 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    // Show the profile page of the authenticated user
     public function show()
     {
         $user = Auth::user();
         return view('profile.show', compact('user'));
     }
 
-    // Show the edit form for the user's profile
     public function edit()
     {
         $user = Auth::user();
         return view('profile.edit', compact('user'));
     }
 
-    // Update the user's profile data
     public function update(Request $request)
     {
         $user = Auth::user();
